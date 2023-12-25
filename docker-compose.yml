@@ -3,7 +3,7 @@ version: '3'
 services:
   mongodb:
     image: mongo
-    container_name: mongodb1
+    container_name: mongodb
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
@@ -28,7 +28,7 @@ services:
     image: python:3.10
     container_name: python_app1
     volumes:
-      - /app
+      - ./your_python_app_directory:/app  # Corrigido o caminho do volume
     environment:
       MONGO_URI: mongodb://root:root@mongodb:27017/poc
     depends_on:
