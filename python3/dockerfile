@@ -1,0 +1,10 @@
+FROM python:latest
+
+# Instalação dos pacotes adicionais
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip \
+    gnupg \
+    wget \
+    vim \
+  && rm -rf /var/lib/apt/lists/*

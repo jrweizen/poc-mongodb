@@ -1,0 +1,137 @@
+// Script para inserir 20 itens na coleção "tecnologiasdisruptivas"
+
+// Conecte-se ao banco de dados (substitua nomedobanco pelo nome real do seu banco de dados)
+use nomedobanco
+
+// Defina a coleção
+var colecao = db.tecnologiasdisruptivas;
+
+// Itens a serem inseridos
+var itens = [
+  {
+    nome: "Inteligência Artificial",
+    descricao: "Máquinas que podem aprender e tomar decisões sem intervenção humana.",
+    ano_lancamento: 1956,
+    empresa_lider: "Diversas"
+  },
+  {
+    nome: "Blockchain",
+    descricao: "Tecnologia de registro distribuído usada em criptomoedas como o Bitcoin.",
+    ano_lancamento: 2008,
+    empresa_lider: "N/A"
+  },
+  {
+    nome: "Internet das Coisas (IoT)",
+    descricao: "Conceito de interconexão digital de objetos cotidianos com a internet.",
+    ano_lancamento: 1999,
+    empresa_lider: "Diversas"
+  },
+  {
+    nome: "Realidade Virtual",
+    descricao: "Ambiente simulado gerado por computador que simula a presença física do usuário.",
+    ano_lancamento: 1968,
+    empresa_lider: "Oculus VR"
+  },
+  {
+    nome: "Computação Quântica",
+    descricao: "Modelo de computação que usa os princípios da mecânica quântica.",
+    ano_lancamento: 1981,
+    empresa_lider: "IBM, Google"
+  },
+  {
+    nome: "Veículos Autônomos",
+    descricao: "Veículos que podem operar sem intervenção humana.",
+    ano_lancamento: 2010,
+    empresa_lider: "Waymo, Tesla"
+  },
+  {
+    nome: "Impressão 3D",
+    descricao: "Processo de construção de objetos tridimensionais a partir de um modelo digital.",
+    ano_lancamento: 1984,
+    empresa_lider: "Stratasys"
+  },
+  {
+    nome: "Biometria Facial",
+    descricao: "Método de reconhecimento facial para autenticação de identidade.",
+    ano_lancamento: 1965,
+    empresa_lider: "N/A"
+  },
+  {
+    nome: "Robótica Colaborativa",
+    descricao: "Robôs que trabalham em colaboração com seres humanos em um mesmo ambiente.",
+    ano_lancamento: 1996,
+    empresa_lider: "Universal Robots"
+  },
+  {
+    nome: "Aprendizado de Máquina",
+    descricao: "Campo da inteligência artificial que permite que sistemas aprendam com dados.",
+    ano_lancamento: 1959,
+    empresa_lider: "Google, Microsoft"
+  },
+  {
+    nome: "Biotecnologia",
+    descricao: "Utilização de organismos vivos, sistemas biológicos e derivados para desenvolver produtos e aplicações.",
+    ano_lancamento: 1919,
+    empresa_lider: "CRISPR Therapeutics, Moderna"
+  },
+  {
+    nome: "Nanotecnologia",
+    descricao: "Manipulação de estruturas e dispositivos em escala nanométrica.",
+    ano_lancamento: 1981,
+    empresa_lider: "N/A"
+  },
+  {
+    nome: "Energias Renováveis",
+    descricao: "Fontes de energia que não se esgotam, como solar e eólica.",
+    ano_lancamento: 1954,
+    empresa_lider: "Tesla, Siemens Gamesa"
+  },
+  {
+    nome: "Realidade Aumentada",
+    descricao: "Sobreposição de elementos digitais ao ambiente real.",
+    ano_lancamento: 1990,
+    empresa_lider: "Microsoft, Magic Leap"
+  },
+  {
+    nome: "Computação em Nuvem",
+    descricao: "Oferta de serviços de computação por meio da internet.",
+    ano_lancamento: 2000,
+    empresa_lider: "Amazon Web Services, Microsoft Azure"
+  },
+  {
+    nome: "Redes 5G",
+    descricao: "Quinta geração de redes móveis com maior velocidade e menor latência.",
+    ano_lancamento: 2019,
+    empresa_lider: "Huawei, Ericsson"
+  },
+  {
+    nome: "Cidades Inteligentes",
+    descricao: "Uso de tecnologia para melhorar a qualidade de vida nas áreas urbanas.",
+    ano_lancamento: 2008,
+    empresa_lider: "Siemens, IBM"
+  },
+  {
+    nome: "Drones",
+    descricao: "Veículos aéreos não tripulados usados em diversas aplicações.",
+    ano_lancamento: 1935,
+    empresa_lider: "DJI, Parrot"
+  },
+  {
+    nome: "Edição Genética",
+    descricao: "Alteração do DNA de organismos para correção de defeitos genéticos ou melhoria de características.",
+    ano_lancamento: 2012,
+    empresa_lider: "CRISPR Therapeutics"
+  },
+  {
+    nome: "Holografia",
+    descricao: "Técnica de criar imagens tridimensionais usando luz.",
+    ano_lancamento: 1947,
+    empresa_lider: "N/A"
+  }
+];
+
+// Inserir os itens na coleção
+colecao.insertMany(itens);
+
+// Mostrar mensagem de conclusão
+print("Inserção de itens completa")

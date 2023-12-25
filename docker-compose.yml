@@ -1,0 +1,25 @@
+version: '3'
+services:
+  python-app:
+    image: python:latest
+    container_name: python-app
+    working_dir: /app
+    volumes:
+      - ./app:/app
+    command: tail -f /dev/null
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+
+  # robo3t:
+  #   image: robo3t/robo3t:latest
+  #   container_name: robo3t
+  #   volumes:
+  #     - ./robo3t:/root/.config/robomongo
+  #   depends_on:
+  #     - mongodb
+  #   network_mode: host
+
