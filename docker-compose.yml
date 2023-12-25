@@ -1,25 +1,35 @@
 version: '3'
-services:
-  python-app:
-    image: python:latest
-    container_name: python-app
-    working_dir: /app
-    volumes:
-      - ./app:/app
-    command: tail -f /dev/null
 
+services:
   mongodb:
-    image: mongo:latest
-    container_name: mongodb
+    image: mongo
+    container_name: mongodb1
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: poc
     ports:
       - "27017:27017"
 
-  # robo3t:
-  #   image: robo3t/robo3t:latest
-  #   container_name: robo3t
-  #   volumes:
-  #     - ./robo3t:/root/.config/robomongo
-  #   depends_on:
-  #     - mongodb
-  #   network_mode: host
+  mongo-express:
+    image: mongo-express
+    container_name: mongo_express1
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongodb
+      ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: root
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mongodb
 
+  python-app:
+    image: python:3.10
+    container_name: python_app1
+    volumes:
+      - /app
+    environment:
+      MONGO_URI: mongodb://root:root@mongodb:27017/poc
+    depends_on:
+      - mongodb
