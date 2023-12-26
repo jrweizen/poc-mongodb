@@ -2,18 +2,22 @@ version: '3'
 
 services:
   mongodb:
-    image: mongo
-    container_name: mongodb
+    image: mongo:latest
+    container_name: mongodb_container
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
-      MONGO_INITDB_DATABASE: poc
+      MONGO_INITDB_DATABASE: mydatabase
     ports:
       - "27017:27017"
+    networks:
+      - mongo-net
+    volumes:
+      - mongodb_data:/data/db
 
   mongo-express:
     image: mongo-express
-    container_name: mongo_express1
+    container_name: mongo_express_container
     environment:
       ME_CONFIG_MONGODB_SERVER: mongodb
       ME_CONFIG_MONGODB_PORT: 27017
@@ -23,13 +27,22 @@ services:
       - "8081:8081"
     depends_on:
       - mongodb
+    networks:
+      - mongo-net
 
   python-app:
     image: python:3.10
-    container_name: python_app1
+    container_name: python_app_container
     volumes:
-      - ./your_python_app_directory:/app  # Corrigido o caminho do volume
+      - /tmp:/app
     environment:
-      MONGO_URI: mongodb://root:root@mongodb:27017/poc
-    depends_on:
-      - mongodb
+      MONGO_URI: mongodb://root:root@mongodb:27017/mydatabase
+    networks:
+      - mongo-net
+
+networks:
+  mongo-net:
+    driver: bridge
+
+volumes:
+  mongodb_data:
